@@ -25,7 +25,7 @@ jobs:
       - name: Install Dependencies
         run: |
           luarocks install luaunit
-          luarocks install lpeg  # Example of additional dependencies
+          luarocks install lpeg
 
       - name: Run Tests
         run: lua test.lua
