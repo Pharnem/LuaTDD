@@ -32,7 +32,6 @@ return function(str)
     end
     local ret = sum:match(str)
     if ret==nil then
-        print(mdelim)
         error("!No result: Error: "..(delim or "nil") .. ' ' .. (mdelim or "nil"))
     end
     return ret
