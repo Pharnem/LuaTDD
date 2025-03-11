@@ -1,0 +1,31 @@
+name: LuaUnit Tests
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Lua and LuaRocks
+        uses: leafo/gh-actions-lua@v10
+        with:
+          luaVersion: "5.4"
+
+      - name: Install LuaRocks
+        uses: leafo/gh-actions-luarocks@v4
+
+      - name: Install Dependencies
+        run: |
+          luarocks install luaunit
+          luarocks install lpeg  # Example of additional dependencies
+
+      - name: Run Tests
+        run: lua test.lua
